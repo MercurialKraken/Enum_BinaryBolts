@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.RobotState.BotState;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.HangerSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -15,13 +17,15 @@ import frc.robot.subsystems.Arm;
 public class HangerAndArm extends ParallelCommandGroup {
   /** Creates a new HangerAndArm. */
   BotState botState;
-  Arm arm;
-  public HangerAndArm(Arm arm, BotState botState) {
-    this.arm = arm;
+  HangerSubsystem hangerSubsystem;
+  ArmSubsystem armSubsystem;
+  public HangerAndArm(ArmSubsystem armSubsystem, HangerSubsystem hangerSubsystem, BotState botState) {
+    this.armSubsystem = armSubsystem;
+    this.hangerSubsystem = hangerSubsystem;
     this.botState = botState;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new InstantCommand(()->arm.enumArm(botState.armState)));
-    addCommands(new InstantCommand(()->arm.enumHanger(botState.hangerState)));
+    addCommands(new InstantCommand(()->armSubsystem.enumArm(botState.armState)));
+    addCommands(new InstantCommand(()->hangerSubsystem.enumHanger(botState.hangerState)));
   }
 }

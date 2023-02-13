@@ -6,20 +6,28 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.Arm.ArmState;
-import frc.robot.subsystems.Arm.GrabberState;
-import frc.robot.subsystems.Arm.HangerState;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.GrabberSubsystem;
+import frc.robot.subsystems.HangerSubsystem;
+import frc.robot.subsystems.ArmSubsystem.ArmState;
+import frc.robot.subsystems.GrabberSubsystem.GrabberState;
+import frc.robot.subsystems.HangerSubsystem.HangerState;
 
 /** Add your docs here. */
 public class RobotState extends SubsystemBase 
 {
 
-    private Arm m_arm;
+    //private Arm m_arm;
+    private GrabberSubsystem grabberSubsystem;
+    private HangerSubsystem hangerSubsystem;
+    private ArmSubsystem armSubsystem;
     private BotState robotState;
 
-    public RobotState(Arm arm)
+    public RobotState(ArmSubsystem armSubsystem, HangerSubsystem hangerSubsystem, GrabberSubsystem grabberSubsystem)
     {
-        m_arm = arm;
+        this.armSubsystem = armSubsystem;
+        this.hangerSubsystem = hangerSubsystem;
+        this.grabberSubsystem = grabberSubsystem;
 
     }
 
@@ -27,6 +35,7 @@ public class RobotState extends SubsystemBase
     {
         robotState = botState;
     }
+
 
     public BotState getBotState ()
     {

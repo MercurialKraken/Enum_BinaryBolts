@@ -305,10 +305,7 @@ public class Arm extends SubsystemBase {
         this.arm.set(TalonFXControlMode.Position,increment);
       }
 
-      public void enumHanger(HangerState hangerState)
-      {
-        this.hanger.set(TalonFXControlMode.Position,hangerState.hangerSetpoint);
-      }
+
 
       public void enumGrabber(GrabberState grabberState)
       {
